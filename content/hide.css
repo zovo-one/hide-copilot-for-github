@@ -1,0 +1,273 @@
+/* ============================================================================
+ * Hide Copilot for GitHub — content/hide.css
+ * ----------------------------------------------------------------------------
+ * Selector version: 1.0.0 (2026-07-20)
+ *
+ * Architecture: every rule is gated by an <html> class that toggle.ts applies
+ * based on storage.local settings. Selectors target SEMANTIC ATTRIBUTES ONLY
+ * (aria-label, data-testid, title substring) — NEVER minified class names.
+ * When GitHub ships a redesign that breaks a selector, bump the version
+ * comment, update the broken selector, ship a 1.0.x patch.
+ *
+ * Privacy: this file is pure CSS. It reads zero page content. The hiding is
+ * done by the browser's CSS engine — the content script only toggles <html>
+ * classes; it never reads the DOM nodes that these rules match.
+ *
+ * FOUC-safe pattern: the per-category <html> classes ARE the gate. toggle.ts
+ * is injected at document_start and synchronously adds the hico7a3b-hcg-boot class
+ * to <html> BEFORE the first paint; the storage.local.get().then() resolves
+ * shortly after and applies the per-category hico7a3b-hcg-hide-<cat> classes.
+ * Because the CSS rules below are *gated* by those classes, no rule fires
+ * until toggle.ts has spoken for the toggle state — so there is no
+ * "flash of hidden, then shown" or "flash of shown, then hidden" on first
+ * paint. The boot class itself is informational only (it does NOT hide
+ * anything by itself); it exists so future debugging can grep for it to
+ * confirm the content script spoke before paint.
+ *
+ * Maintenance: each rule below is independent — a single broken selector
+ * does not cascade to other rules failing. Selectors are grouped by category
+ * so a GitHub redesign that breaks (e.g.) the chat panel can be patched by
+ * editing only the chat block, bumping the selector version, and shipping a
+ * 1.0.x release. The architecture (toggle.ts + html-class-gated CSS) never
+ * changes.
+ * ========================================================================== */
+
+/* ============================================================================
+ * Category 1: Copilot Chat panel
+ * ----------------------------------------------------------------------------
+ * Hides the right-rail / bottom-dock Copilot Chat container, its textarea
+ * input, and any dock/sidebar labeled with Copilot Chat semantics. Triggered
+ * when <html> has the `hico7a3b-hcg-hide-chat` class (toggle.ts adds it based on
+ * storage.categories.chat === true && masterEnabled === true).
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-chat [aria-label*="Copilot Chat" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-chat [aria-label*="Copilot chat" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-chat [data-testid*="copilot-chat" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-chat [title*="Copilot Chat" i] {
+  display: none !important;
+}
+/* Chat input textarea (right-rail composer) — scoped under a container that
+ * also advertises Copilot semantics so we do not blanket-hide textareas. */
+html.hico7a3b-hcg-hide-chat
+  :is(div, section, aside):has(> textarea)[aria-label*="Copilot" i] {
+  display: none !important;
+}
+/* Copilot Chat dock button in the bottom-right floating dock. */
+html.hico7a3b-hcg-hide-chat button[data-testid*="copilot-dock" i] {
+  display: none !important;
+}
+/* Sidebar entry that hosts the chat panel. */
+html.hico7a3b-hcg-hide-chat [data-testid*="copilot-sidebar" i] {
+  display: none !important;
+}
+/* Generic safety net: any element whose aria-label is exactly "Copilot"
+ * (commonly the chat container root). */
+html.hico7a3b-hcg-hide-chat [aria-label="Copilot" i] {
+  display: none !important;
+}
+
+/* ============================================================================
+ * Category 2: Global "Ask Copilot" buttons
+ * ----------------------------------------------------------------------------
+ * Hides global Copilot entry points in nav/header/menu — i.e. the button and
+ * anchor elements labeled with Copilot semantics site-wide. Triggered when
+ * <html> has the `hico7a3b-hcg-hide-buttons` class. Scoped to button/a elements
+ * to avoid catching structural containers that happen to mention Copilot.
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-buttons button[aria-label*="Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-buttons button[title*="Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-buttons a[aria-label*="Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-buttons a[title*="Copilot" i] {
+  display: none !important;
+}
+/* Header nav entry (the "Copilot" link in the global GitHub nav). */
+html.hico7a3b-hcg-hide-buttons nav a[aria-label*="Ask Copilot" i] {
+  display: none !important;
+}
+/* Menuitem entries inside dropdown menus. */
+html.hico7a3b-hcg-hide-buttons [role="menuitem"][aria-label*="Copilot" i] {
+  display: none !important;
+}
+/* data-testid variant for header buttons. */
+html.hico7a3b-hcg-hide-buttons [data-testid*="copilot-button" i] {
+  display: none !important;
+}
+/* Global search "Ask Copilot" entry inside the search palette. */
+html.hico7a3b-hcg-hide-buttons [data-testid*="copilot-search" i] {
+  display: none !important;
+}
+
+/* ============================================================================
+ * Category 3: PR review Copilot
+ * ----------------------------------------------------------------------------
+ * Hides Copilot review entry points on pull-request review pages — i.e. the
+ * "Review with Copilot", "Suggest with Copilot", and "Summarize with Copilot"
+ * buttons plus the data-testid variant for the review surface. Triggered when
+ * <html> has the `hico7a3b-hcg-hide-pr` class.
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-pr [data-testid*="copilot-review" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr button[aria-label*="Review with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr button[aria-label*="Suggest with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr button[aria-label*="Summarize with Copilot" i] {
+  display: none !important;
+}
+/* Anchor variants (GitHub sometimes renders these as <a> not <button>). */
+html.hico7a3b-hcg-hide-pr a[aria-label*="Review with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr a[aria-label*="Suggest with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr a[aria-label*="Summarize with Copilot" i] {
+  display: none !important;
+}
+/* Title-attribute variant for the same labels. */
+html.hico7a3b-hcg-hide-pr [title*="Review with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-pr [title*="Suggest with Copilot" i] {
+  display: none !important;
+}
+
+/* ============================================================================
+ * Category 4: Code review inline suggestions
+ * ----------------------------------------------------------------------------
+ * Hides inline "Ask Copilot about this" hover affordances in diff views and
+ * any per-line Copilot suggestion UI in the code review surface. Triggered
+ * when <html> has the `hico7a3b-hcg-hide-review` class.
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-review [data-testid*="copilot-suggestion" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-review [aria-label*="Ask Copilot about" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-review [title*="Ask Copilot about" i] {
+  display: none !important;
+}
+/* Per-line hover affordance in the diff table. */
+html.hico7a3b-hcg-hide-review [data-testid*="copilot-diff" i] {
+  display: none !important;
+}
+/* Inline suggestion popover container. */
+html.hico7a3b-hcg-hide-review [data-testid*="copilot-inline" i] {
+  display: none !important;
+}
+/* Structural fallback: any element whose aria-label mentions Copilot AND
+ * lives inside a diff context. */
+html.hico7a3b-hcg-hide-review
+  :is(.diff-table, [data-testid*="diff" i], [data-file-code])
+  [aria-label*="Copilot" i] {
+  display: none !important;
+}
+
+/* ============================================================================
+ * Category 5: Issue / discussion Copilot
+ * ----------------------------------------------------------------------------
+ * Hides "Generate with Copilot" buttons in issue / discussion / new-thread
+ * author forms. Triggered when <html> has the `hico7a3b-hcg-hide-issues` class.
+ * Scoped to form contexts to avoid catching unrelated Copilot surfaces.
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-issues button[aria-label*="Generate with Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-issues a[aria-label*="Generate with Copilot" i] {
+  display: none !important;
+}
+/* Generic Copilot button inside an author/compose form. */
+html.hico7a3b-hcg-hide-issues
+  form:has(textarea)
+  button[aria-label*="Copilot" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-issues
+  form:has(textarea)
+  a[aria-label*="Copilot" i] {
+  display: none !important;
+}
+/* Comment composer toolbar entry. */
+html.hico7a3b-hcg-hide-issues
+  [data-testid*="comment-composer" i]
+  [aria-label*="Copilot" i] {
+  display: none !important;
+}
+/* New-issue / new-discussion specific data-testid. */
+html.hico7a3b-hcg-hide-issues [data-testid*="copilot-issue" i] {
+  display: none !important;
+}
+/* Title variant. */
+html.hico7a3b-hcg-hide-issues button[title*="Generate with Copilot" i] {
+  display: none !important;
+}
+
+/* ============================================================================
+ * Category 6: Marketing upsell cards
+ * ----------------------------------------------------------------------------
+ * Hides Copilot marketing / upsell surfaces — "Copilot is available for this
+ * repo", "Upgrade to Copilot" banners, and similar promotional cards.
+ * Triggered when <html> has the `hico7a3b-hcg-hide-upsell` class. Targets
+ * data-testid markers and structural :has() on headed sections to catch the
+ * banner without touching user-generated content.
+ * ========================================================================== */
+html.hico7a3b-hcg-hide-upsell [data-testid*="copilot-upsell" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-upsell [data-testid*="copilot-banner" i] {
+  display: none !important;
+}
+/* Explicit aria-labels for known marketing surfaces. */
+html.hico7a3b-hcg-hide-upsell [aria-label*="Copilot is available" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-upsell [aria-label*="Upgrade to Copilot" i] {
+  display: none !important;
+}
+/* Title variant. */
+html.hico7a3b-hcg-hide-upsell [title*="Copilot is available" i] {
+  display: none !important;
+}
+html.hico7a3b-hcg-hide-upsell [title*="Upgrade to Copilot" i] {
+  display: none !important;
+}
+/* Structural: a section/aside/div whose first heading advertises Copilot —
+ * catches marketing cards that GitHub wraps in a generic container without
+ * a stable data-testid. :has() is supported in Chrome 105+; the manifest's
+ * minimum_chrome_version is 116, so this is safe. */
+html.hico7a3b-hcg-hide-upsell
+  :is(section, aside, div):has(
+    > :is(h1, h2, h3):is(
+      [data-testid*="copilot" i],
+      [aria-label*="Copilot" i]
+    )
+  ) {
+  display: none !important;
+}
+
+/* ============================================================================
+ * hico7a3b-hcg-boot guard
+ * ----------------------------------------------------------------------------
+ * Informational only — does NOT hide anything by itself. The boot class is
+ * added synchronously to <html> at document_start by toggle.ts to signal
+ * "the content script spoke." The actual hide is gated by the per-category
+ * classes (hico7a3b-hcg-hide-<cat>) that toggle.ts adds based on storage. This
+ * class exists for future debugging: `document.documentElement.classList.
+ * contains('hico7a3b-hcg-boot')` confirms the extension's content script loaded.
+ * ========================================================================== */

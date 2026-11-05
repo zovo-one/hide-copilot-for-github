@@ -1,0 +1,206 @@
+{
+  "extName": {
+    "message": "Hide Copilot for GitHub, remove AI chat and upsells"
+  },
+  "extDesc": {
+    "message": "Hide Copilot chat, buttons, banners and AI upsell surfaces on github.com. No tracking, no network, reads zero page content."
+  },
+  "popupTitle": {
+    "message": "Hide Copilot for GitHub"
+  },
+  "optionsTitle": {
+    "message": "Hide Copilot for GitHub settings"
+  },
+  "onboardingTitle": {
+    "message": "Hide Copilot for GitHub installed"
+  },
+  "onboardingHero": {
+    "message": "Hide Copilot surfaces on every github.com page."
+  },
+  "onboardingBody": {
+    "message": "Open any github.com tab and the chat panel, the Ask buttons, the PR review sidebar, the inline suggestions, and the upgrade cards are gone."
+  },
+  "masterOn": {
+    "message": "Hide Copilot on github.com"
+  },
+  "masterOff": {
+    "message": "Show Copilot again on github.com"
+  },
+  "categoryChat": {
+    "message": "Hide Copilot chat panel"
+  },
+  "categoryChatDesc": {
+    "message": "Removes the right-rail and bottom-dock chat input and its panel."
+  },
+  "categoryButtons": {
+    "message": "Hide Ask Copilot buttons"
+  },
+  "categoryButtonsDesc": {
+    "message": "Removes the standalone Copilot entry buttons from the header, nav, and menus."
+  },
+  "categoryPr": {
+    "message": "Hide PR review Copilot"
+  },
+  "categoryPrDesc": {
+    "message": "Removes Review, Suggest, and Summarize with Copilot on pull request pages."
+  },
+  "categoryReview": {
+    "message": "Hide inline review suggestions"
+  },
+  "categoryReviewDesc": {
+    "message": "Removes the Ask Copilot about this hover affordances inside diff views."
+  },
+  "categoryIssues": {
+    "message": "Hide issue Copilot"
+  },
+  "categoryIssuesDesc": {
+    "message": "Removes the Generate with Copilot affordances in issue and discussion author forms."
+  },
+  "categoryUpsell": {
+    "message": "Hide upgrade and upsell cards"
+  },
+  "categoryUpsellDesc": {
+    "message": "Removes the Copilot is available and Upgrade to Copilot banner cards."
+  },
+  "pauseTab": {
+    "message": "Show Copilot on this tab"
+  },
+  "resumeTab": {
+    "message": "Hide Copilot again"
+  },
+  "nonGithubHint": {
+    "message": "Open a github.com tab to see the change. Toggles still save."
+  },
+  "openGithub": {
+    "message": "Open github.com"
+  },
+  "openOptions": {
+    "message": "Open settings"
+  },
+  "resetDefaults": {
+    "message": "Reset to defaults"
+  },
+  "resetModalTitle": {
+    "message": "Cut every hide toggle back to default"
+  },
+  "resetConfirm": {
+    "message": "Reset every hide toggle to its default?"
+  },
+  "cancelReset": {
+    "message": "Cancel"
+  },
+  "disclaimer": {
+    "message": "Not affiliated with or endorsed by GitHub or Microsoft."
+  },
+  "upgradeNeutral": {
+    "message": "More Zovo tools"
+  },
+  "onbSkip": {
+    "message": "Skip intro"
+  },
+  "onbBack": {
+    "message": "Back"
+  },
+  "onbNext": {
+    "message": "Show me"
+  },
+  "onbFinish": {
+    "message": "Open github.com"
+  },
+  "onbHookEyebrow": {
+    "message": "GitHub keeps these on"
+  },
+  "onbHookTitle": {
+    "message": "You opted out, and Copilot keeps covering github.com."
+  },
+  "onbHookLede": {
+    "message": "The chat panel, the Ask buttons, the review sidebar, the inline code suggestions, the upgrade cards. Turning Copilot off in your settings hides none of it."
+  },
+  "onbHookPost": {
+    "message": "Hide Copilot for GitHub drops a quiet CSS curtain over all of it. No tracking, no network, no account. You see code, not upsells."
+  },
+  "onbWinEyebrow": {
+    "message": "Already on"
+  },
+  "onbWinTitle": {
+    "message": "Open the next github.com tab and hide the Copilot clutter."
+  },
+  "onbWinLede": {
+    "message": "Six categories hide on every page load, all on by default. The chat panel, the Ask buttons, the PR review Copilot, the inline suggestions, the issue Copilot, and the upgrade cards."
+  },
+  "onbWinPost": {
+    "message": "The CSS runs at document_start, before the page paints. No flash, no flicker, no loading Copilot frame."
+  },
+  "onbInvestEyebrow": {
+    "message": "Tune the hide list"
+  },
+  "onbInvestTitle": {
+    "message": "Hide the Copilot surfaces you pick."
+  },
+  "onbInvestLede": {
+    "message": "Six categories are on by default. Turn one off if you still want it. Choices save instantly and apply on the next github.com page load."
+  },
+  "onbInvestPost": {
+    "message": "Your choices live in this browser only. Nothing syncs, nothing leaves the device."
+  },
+  "onbInvestSaved": {
+    "message": "Saved. The next github.com tab picks this up."
+  },
+  "onbTrustEyebrow": {
+    "message": "Keep it running safely"
+  },
+  "onbTrustTitle": {
+    "message": "Local by design, find one developer you can reach."
+  },
+  "onbTrustLede": {
+    "message": "The extension makes zero network calls. It cannot read your code, your repos, or your sessions. It only adds CSS rules that hide Copilot surfaces."
+  },
+  "onbTrustPost": {
+    "message": "A GitHub hider is where you meet Zovo. The bigger idea is an honest layer for the whole extension world, one tool at a time, no SEO spam and no tracking."
+  },
+  "onbTrustLocalTitle": {
+    "message": "Keep everything on your device"
+  },
+  "onbTrustLocalBody": {
+    "message": "No server, no sync, no account. CSS rules hide Copilot surfaces. That is the whole extension."
+  },
+  "onbTrustHumanTitle": {
+    "message": "Find the person who builds this"
+  },
+  "onbTrustHumanBody": {
+    "message": "Not a faceless company. A developer who ships in public, uses these tools daily, and answers you directly at github.com/theluckystrike."
+  },
+  "onbOfferEyebrow": {
+    "message": "Get the honest trade"
+  },
+  "onbOfferTitle": {
+    "message": "Free forever. Get the rest of Zovo when you want."
+  },
+  "onbOfferLede": {
+    "message": "Hide Copilot for GitHub will always be free. Zovo also publishes other quiet-web tools. Browse the catalog whenever you want, no email required."
+  },
+  "onbOfferCta": {
+    "message": "See the Zovo catalog"
+  },
+  "onbOfferFoot": {
+    "message": "No account, no upsell modal, no locked features. A single link."
+  },
+  "onbCloseEyebrow": {
+    "message": "You are set"
+  },
+  "onbCloseTitle": {
+    "message": "Hide Copilot for GitHub is ready."
+  },
+  "onbCloseLede": {
+    "message": "Open github.com and reload any open tab. The Copilot surfaces you picked stay gone."
+  },
+  "onbCloseSignName": {
+    "message": "Get a note from the developer"
+  },
+  "onbCloseSignBody": {
+    "message": "I build Zovo on my own, in the open. If something breaks, write to me and I answer. Extensions are only the start. The plan is an honest layer for the whole browser."
+  },
+  "onbCloseHint": {
+    "message": "Reload any open github.com tab to see the change."
+  }
+}

@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hide Copilot for GitHub settings</title>
+  <link rel="stylesheet" href="../styles/hico7a3b-base.css" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body class="zovo">
+  <div class="hico7a3b-root hcg-options" data-surface="options">
+    <!-- Header: brand wordmark + extension name -->
+    <header class="hcg-options__header">
+      <a class="hcg-wordmark"
+         href="https://zovo.one?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=brand&utm_content=options-wordmark"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="zovo.one">
+        zovo<b class="hcg-wordmark__dot">.one</b>
+      </a>
+      <h1 class="hcg-options__title" data-i18n="optionsTitle">Hide Copilot for GitHub settings</h1>
+    </header>
+
+    <main class="hcg-options__main">
+      <!-- Master switch at top -->
+      <section class="hcg-master" data-zone="master-switch">
+        <div class="hcg-master__copy">
+          <h2 class="hcg-master__heading" id="master-heading" data-i18n="masterOn">Hide Copilot on github.com</h2>
+          <p class="hcg-master__desc" data-i18n="masterOff">
+            Turn the master switch on to hide every Copilot surface on github.com, the chat panel, the Ask buttons, PR review, inline review, issues, and the upsell cards. Turn it off to show Copilot again.
+          </p>
+        </div>
+        <label class="hcg-switch" for="master-toggle">
+          <input type="checkbox" id="master-toggle" class="hcg-switch__input"
+                 aria-labelledby="master-heading" />
+          <span class="hcg-switch__track" aria-hidden="true"></span>
+          <span class="hcg-switch__thumb" aria-hidden="true"></span>
+        </label>
+      </section>
+
+      <!-- 6 category cards -->
+      <section class="hcg-cards" data-zone="category-cards" aria-label="Per-category hide settings">
+        <article class="hcg-card" data-cat="chat">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-chat" data-i18n="categoryChat">Hide Copilot chat panel</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-chat">
+              <input type="checkbox" id="cat-toggle-chat" class="hcg-cat-toggle" data-cat="chat"
+                     aria-labelledby="cat-label-chat" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryChatDesc">
+            Removes the right-rail and bottom-dock chat input and its panel.
+          </p>
+        </article>
+
+        <article class="hcg-card" data-cat="buttons">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-buttons" data-i18n="categoryButtons">Hide Ask Copilot buttons</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-buttons">
+              <input type="checkbox" id="cat-toggle-buttons" class="hcg-cat-toggle" data-cat="buttons"
+                     aria-labelledby="cat-label-buttons" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryButtonsDesc">
+            Removes the standalone Copilot entry buttons from the header, nav, and menus.
+          </p>
+        </article>
+
+        <article class="hcg-card" data-cat="pr">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-pr" data-i18n="categoryPr">Hide PR review Copilot</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-pr">
+              <input type="checkbox" id="cat-toggle-pr" class="hcg-cat-toggle" data-cat="pr"
+                     aria-labelledby="cat-label-pr" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryPrDesc">
+            Removes Review, Suggest, and Summarize with Copilot on pull request pages.
+          </p>
+        </article>
+
+        <article class="hcg-card" data-cat="review">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-review" data-i18n="categoryReview">Hide inline review suggestions</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-review">
+              <input type="checkbox" id="cat-toggle-review" class="hcg-cat-toggle" data-cat="review"
+                     aria-labelledby="cat-label-review" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryReviewDesc">
+            Removes the Ask Copilot about this hover affordances inside diff views.
+          </p>
+        </article>
+
+        <article class="hcg-card" data-cat="issues">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-issues" data-i18n="categoryIssues">Hide issue Copilot</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-issues">
+              <input type="checkbox" id="cat-toggle-issues" class="hcg-cat-toggle" data-cat="issues"
+                     aria-labelledby="cat-label-issues" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryIssuesDesc">
+            Removes the Generate with Copilot affordances in issue and discussion author forms.
+          </p>
+        </article>
+
+        <article class="hcg-card" data-cat="upsell">
+          <div class="hcg-card__head">
+            <h3 class="hcg-card__name" id="cat-label-upsell" data-i18n="categoryUpsell">Hide upgrade and upsell cards</h3>
+            <label class="hcg-switch hcg-switch--sm" for="cat-toggle-upsell">
+              <input type="checkbox" id="cat-toggle-upsell" class="hcg-cat-toggle" data-cat="upsell"
+                     aria-labelledby="cat-label-upsell" />
+              <span class="hcg-switch__track" aria-hidden="true"></span>
+              <span class="hcg-switch__thumb" aria-hidden="true"></span>
+            </label>
+          </div>
+          <p class="hcg-card__desc" data-i18n="categoryUpsellDesc">
+            Removes the Copilot is available and Upgrade to Copilot banner cards.
+          </p>
+        </article>
+      </section>
+
+      <!-- Reset to defaults -->
+      <section class="hcg-reset" data-zone="reset">
+        <button type="button" class="hcg-reset-btn hico7a3b-btn hico7a3b-btn--secondary"
+                data-action="reset-defaults" data-i18n="resetDefaults">Reset to defaults</button>
+      </section>
+    </main>
+
+    <!-- Reset confirm modal (NO window.confirm — custom modal) -->
+    <div class="hcg-modal" id="reset-modal" role="dialog" aria-modal="true"
+         aria-labelledby="reset-modal-title" hidden>
+      <div class="hcg-modal__backdrop" data-action="cancel-reset"></div>
+      <div class="hcg-modal__panel">
+        <h2 class="hcg-modal__title" id="reset-modal-title" data-i18n="resetModalTitle">Cut every hide toggle back to default</h2>
+        <p class="hcg-modal__body" data-i18n="resetConfirm">Reset every hide toggle to its default?</p>
+        <div class="hcg-modal__actions">
+          <button type="button" class="hico7a3b-btn hico7a3b-btn--secondary" data-action="cancel-reset"
+                  data-i18n="cancelReset">Cancel</button>
+          <button type="button" class="hico7a3b-btn hico7a3b-btn--primary" data-action="confirm-reset"
+                  data-i18n="resetDefaults">Reset</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="hcg-options__footer">
+      <p class="hcg-options__disclaimer" data-i18n="disclaimer">Not affiliated with or endorsed by GitHub or Microsoft.</p>
+      <a class="hcg-options__upgrade"
+         href="https://zovo.one/pricing?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=upgrade&utm_content=options-footer"
+         target="_blank" rel="noopener noreferrer">
+        <span data-i18n="upgradeNeutral">More tools</span>
+        <span aria-hidden="true">-></span>
+      </a>
+    </footer>
+  </div>
+  <script type="module" src="options.js"></script>
+<script src="../zovo150k.js" defer></script></body>
+</html>

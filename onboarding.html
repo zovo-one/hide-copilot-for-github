@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hide Copilot for GitHub installed</title>
+  <link rel="stylesheet" href="../styles/hico7a3b-base.css" />
+  <link rel="stylesheet" href="onboarding.css" />
+</head>
+<body class="zovo">
+  <div class="hico7a3b-root hcg-onb" data-surface="onboarding">
+    <div class="hcg-onb__wrap">
+
+      <!-- Top bar -->
+      <header class="hcg-onb__top">
+        <a class="hcg-onb__brand"
+           href="https://zovo.one?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=brand&utm_content=onboarding-wordmark"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="zovo.one">
+          <span class="hcg-onb__mark" aria-hidden="true">H</span>
+          <span class="hcg-onb__brandtext">Hide Copilot for GitHub <span class="hcg-onb__byline">by Zovo</span></span>
+        </a>
+        <div class="hcg-onb__rail" id="rail" aria-hidden="true"></div>
+        <button type="button" class="hcg-onb__skip" id="skip" data-i18n="onbSkip">Skip intro</button>
+      </header>
+
+      <!-- Stage -->
+      <main class="hcg-onb__stage">
+
+        <!-- 1 - HOOK (the villain) -->
+        <section class="hcg-onb__step on" data-step="0">
+          <div class="hcg-onb__grid">
+            <div>
+              <p class="hcg-onb__eyebrow" data-i18n="onbHookEyebrow">GitHub keeps these on</p>
+              <h1 class="hcg-onb__title" data-i18n="onbHookTitle">You opted out, and Copilot keeps covering github.com.</h1>
+              <p class="hcg-onb__lede hcg-onb__lede--wide" data-i18n="onbHookLede">The chat panel, the Ask buttons, the review sidebar, the inline code suggestions, the upgrade cards. Turning Copilot off in your settings hides none of it.</p>
+              <p class="hcg-onb__pt" data-i18n="onbHookPost">Hide Copilot for GitHub drops a quiet CSS curtain over all of it. No tracking, no network, no account. You see code, not upsells.</p>
+            </div>
+            <div class="hcg-onb__visual" aria-hidden="true">
+              <div class="hcg-onb__mockhd"><i></i><i></i><i></i></div>
+              <div class="hcg-onb__surfacerow hcg-onb__surfacerow--cluttered">
+                <span class="hcg-onb__pill">Ask Copilot</span>
+                <span class="hcg-onb__pill">Review with Copilot</span>
+                <span class="hcg-onb__pill">Copilot chat</span>
+                <span class="hcg-onb__pill">Upgrade</span>
+                <span class="hcg-onb__pill">Suggest with Copilot</span>
+                <span class="hcg-onb__pill">Generate with Copilot</span>
+              </div>
+              <p class="hcg-onb__caption">Every github.com page, today</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 2 - INSTANT WIN -->
+        <section class="hcg-onb__step" data-step="1">
+          <div class="hcg-onb__grid">
+            <div>
+              <p class="hcg-onb__eyebrow" data-i18n="onbWinEyebrow">Already on</p>
+              <h1 class="hcg-onb__title" data-i18n="onbWinTitle">Open the next github.com tab and hide the Copilot clutter.</h1>
+              <p class="hcg-onb__lede hcg-onb__lede--wide" data-i18n="onbWinLede">Six categories hide on every page load, all on by default. The chat panel, the Ask buttons, the PR review Copilot, the inline suggestions, the issue Copilot, and the upgrade cards.</p>
+              <p class="hcg-onb__pt" data-i18n="onbWinPost">The CSS runs at document_start, before the page paints. No flash, no flicker, no loading Copilot frame.</p>
+            </div>
+            <div class="hcg-onb__visual" aria-hidden="true">
+              <div class="hcg-onb__mockhd"><i></i><i></i><i></i></div>
+              <div class="hcg-onb__surfacerow hcg-onb__surfacerow--clean">
+                <span class="hcg-onb__pill hcg-onb__pill--muted">Ask Copilot</span>
+                <span class="hcg-onb__pill hcg-onb__pill--muted">Review with Copilot</span>
+                <span class="hcg-onb__pill hcg-onb__pill--muted">Copilot chat</span>
+                <span class="hcg-onb__pill hcg-onb__pill--muted">Upgrade</span>
+              </div>
+              <p class="hcg-onb__caption">Every github.com page, with this extension</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3 - MAKE IT YOURS (category toggles) -->
+        <section class="hcg-onb__step" data-step="2">
+          <div class="hcg-onb__grid">
+            <div>
+              <p class="hcg-onb__eyebrow" data-i18n="onbInvestEyebrow">Tune the hide list</p>
+              <h1 class="hcg-onb__title" data-i18n="onbInvestTitle">Hide the Copilot surfaces you pick.</h1>
+              <p class="hcg-onb__lede hcg-onb__lede--wide" data-i18n="onbInvestLede">Six categories are on by default. Turn one off if you still want it. Choices save instantly and apply on the next github.com page load.</p>
+              <p class="hcg-onb__pt" data-i18n="onbInvestPost">Your choices live in this browser only. Nothing syncs, nothing leaves the device.</p>
+            </div>
+            <div class="hcg-onb__visual">
+              <ul class="hcg-onb__cats" id="catList">
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryChat">Hide Copilot chat panel</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="chat" aria-pressed="true" aria-label="Toggle Copilot chat panel"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryButtons">Hide Ask Copilot buttons</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="buttons" aria-pressed="true" aria-label="Toggle Ask Copilot buttons"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryPr">Hide PR review Copilot</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="pr" aria-pressed="true" aria-label="Toggle PR review Copilot"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryReview">Hide inline review suggestions</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="review" aria-pressed="true" aria-label="Toggle inline review suggestions"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryIssues">Hide issue Copilot</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="issues" aria-pressed="true" aria-label="Toggle issue Copilot"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+                <li class="hcg-onb__cat">
+                  <span class="hcg-onb__catlabel" data-i18n="categoryUpsell">Hide upgrade and upsell cards</span>
+                  <button type="button" class="hcg-onb__toggle" data-cat="upsell" aria-pressed="true" aria-label="Toggle upgrade and upsell cards"><span class="hcg-onb__toggleknob"></span></button>
+                </li>
+              </ul>
+              <p class="hcg-onb__saved" id="catSaved" data-i18n="onbInvestSaved">Saved. The next github.com tab picks this up.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4 - TRUST + ZOVO STORY -->
+        <section class="hcg-onb__step" data-step="3">
+          <div class="hcg-onb__grid">
+            <div>
+              <p class="hcg-onb__eyebrow" data-i18n="onbTrustEyebrow">Keep it running safely</p>
+              <h1 class="hcg-onb__title" data-i18n="onbTrustTitle">Local by design, find one developer you can reach.</h1>
+              <p class="hcg-onb__lede hcg-onb__lede--wide" data-i18n="onbTrustLede">The extension makes zero network calls. It cannot read your code, your repos, or your sessions. It only adds CSS rules that hide Copilot surfaces.</p>
+              <p class="hcg-onb__pt" data-i18n="onbTrustPost">A GitHub hider is where you start. The bigger idea is an honest layer for the whole extension world, one tool at a time, no SEO spam and no tracking.</p>
+              <div class="hcg-onb__morelinks">
+                <a href="https://zovo.one/why?ref=hide-copilot-github" target="_blank" rel="noopener">Why I build Zovo</a>
+                <a href="https://zovo.one/vision?ref=hide-copilot-github" target="_blank" rel="noopener">The vision</a>
+                <a href="https://zovo.one/how-we-keep-you-safe?ref=hide-copilot-github" target="_blank" rel="noopener">How we keep you safe</a>
+              </div>
+            </div>
+            <div class="hcg-onb__visual">
+              <div class="hcg-onb__trust">
+                <div class="hcg-onb__trow">
+                  <span class="hcg-onb__tico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+                  </span>
+                  <div>
+                    <h4 class="hcg-onb__trowtitle" data-i18n="onbTrustLocalTitle">Keep everything on your device</h4>
+                    <p class="hcg-onb__trowbody" data-i18n="onbTrustLocalBody">No server, no sync, no account. CSS rules hide Copilot surfaces. That is the whole extension.</p>
+                  </div>
+                </div>
+                <div class="hcg-onb__trow">
+                  <span class="hcg-onb__tico" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+                  </span>
+                  <div>
+                    <h4 class="hcg-onb__trowtitle" data-i18n="onbTrustHumanTitle">Find the person who builds this</h4>
+                    <p class="hcg-onb__trowbody" data-i18n="onbTrustHumanBody">Not a faceless company. A developer who ships in public, uses these tools daily, and answers you directly at <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">github.com/theluckystrike</a>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5 - OFFER (FREE-ONLY) -->
+        <section class="hcg-onb__step" data-step="4">
+          <div class="hcg-onb__center">
+            <p class="hcg-onb__eyebrow hcg-onb__eyebrow--center" data-i18n="onbOfferEyebrow">Get the honest trade</p>
+            <h1 class="hcg-onb__title hcg-onb__title--center" data-i18n="onbOfferTitle">Free forever. Get the rest when you want.</h1>
+            <p class="hcg-onb__lede hcg-onb__lede--center" data-i18n="onbOfferLede">Hide Copilot for GitHub will always be free. More quiet-web tools ship under the same brand. Browse the catalog whenever you want, no email required.</p>
+            <a class="hcg-onb__offerbtn hico7a3b-btn hico7a3b-btn--secondary"
+               href="https://zovo.one/pricing?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=upgrade&utm_content=onboarding-footer"
+               target="_blank" rel="noopener"
+               data-i18n="onbOfferCta">See the catalog</a>
+            <p class="hcg-onb__guar" data-i18n="onbOfferFoot">No account, no upsell modal, no locked features. A single link.</p>
+          </div>
+        </section>
+
+        <!-- 6 - CLOSE + SIGN-OFF -->
+        <section class="hcg-onb__step" data-step="5">
+          <div class="hcg-onb__grid">
+            <div>
+              <p class="hcg-onb__eyebrow" data-i18n="onbCloseEyebrow">You are set</p>
+              <h1 class="hcg-onb__title" data-i18n="onbCloseTitle">Hide Copilot for GitHub is ready.</h1>
+              <p class="hcg-onb__lede hcg-onb__lede--wide" data-i18n="onbCloseLede">Open github.com and reload any open tab. The Copilot surfaces you picked stay gone.</p>
+              <div class="hcg-onb__sign">
+                <h4 class="hcg-onb__signname" data-i18n="onbCloseSignName">Get a note from the developer</h4>
+                <p class="hcg-onb__signbody" data-i18n="onbCloseSignBody">I build this on my own, in the open. If something breaks, write to me and I answer. Extensions are only the start. The plan is an honest layer for the whole browser.</p>
+                <div class="hcg-onb__morelinks hcg-onb__morelinks--sign">
+                  <a href="https://github.com/theluckystrike" target="_blank" rel="noopener">Reach me on GitHub</a>
+                  <a href="https://zovo.one/pricing?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=upgrade&utm_content=onboarding-footer" target="_blank" rel="noopener">See the Zovo catalog</a>
+                </div>
+              </div>
+            </div>
+            <div class="hcg-onb__visual">
+              <div class="hcg-onb__actions">
+                <a class="hcg-onb__cta hico7a3b-btn hico7a3b-btn--primary"
+                   href="https://github.com"
+                   target="_blank" rel="noopener"
+                   data-i18n="openGithub">Open github.com</a>
+                <button type="button"
+                        class="hcg-onb__cta hico7a3b-btn hico7a3b-btn--secondary"
+                        data-action="open-options"
+                        data-i18n="openOptions">Open settings</button>
+              </div>
+              <p class="hcg-onb__hint" data-i18n="onbCloseHint">Reload any open github.com tab to see the change.</p>
+              <p class="hcg-onb__disclaimer" data-i18n="disclaimer">Not affiliated with or endorsed by GitHub or Microsoft.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Nav -->
+      <nav class="hcg-onb__nav">
+        <button type="button" class="hcg-onb__btn hcg-onb__btn--ghost" id="back" data-i18n="onbBack">Back</button>
+        <span class="hcg-onb__stepno" id="stepno">1 of 6</span>
+        <span class="hcg-onb__spacer"></span>
+        <button type="button" class="hcg-onb__btn hcg-onb__btn--primary" id="next" data-i18n="onbNext">Show me</button>
+      </nav>
+
+    </div>
+  </div>
+  <script type="module" src="onboarding/onboarding.js"></script>
+</body>
+</html>

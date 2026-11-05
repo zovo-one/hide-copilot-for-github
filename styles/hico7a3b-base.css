@@ -1,0 +1,372 @@
+/* ============================================================================
+ * hico7a3b-base.css — Hide Copilot for GitHub design system
+ * ----------------------------------------------------------------------------
+ * The per-extension stylesheet defining all design tokens as CSS custom
+ * properties (colors, type scale, radii, shadows, transitions) plus the
+ * base component classes used across popup, options, and onboarding.
+ *
+ * Source of truth: per-extension design system, derived from the fleet design
+ * template. Import first, before any per-surface stylesheet, so tokens cascade:
+ *     <link rel="stylesheet" href="hico7a3b-base.css">
+ *     <link rel="stylesheet" href="popup.css">
+ * ========================================================================== */
+
+/* ---- Design tokens (light) ------------------------------------------------ */
+:root {
+  /* Brand */
+  --hico7a3b-primary:        #6C5CE7;   /* brand purple — buttons, links, active  */
+  --hico7a3b-primary-dark:   #5A4BD1;   /* hover                                  */
+  --hico7a3b-primary-light:  #8B7CF0;   /* subtle accents / backgrounds           */
+  --hico7a3b-primary-50:     #F1EFFD;   /* tint fill (accent-bg)                  */
+  --hico7a3b-accent:         #00D2D3;   /* teal — secondary actions, highlights   */
+
+  /* Surfaces & text */
+  --hico7a3b-bg:             #FFFFFF;
+  --hico7a3b-surface:        #F8F9FA;   /* cards, input backgrounds               */
+  --hico7a3b-surface-2:      #F1F2F4;   /* nested / hover surface                 */
+  --hico7a3b-text:           #1A1A2E;   /* text primary                           */
+  --hico7a3b-text-secondary: #6B7280;
+  --hico7a3b-border:         #E5E7EB;
+
+  /* Status */
+  --hico7a3b-success:        #10B981;
+  --hico7a3b-warning:        #F59E0B;
+  --hico7a3b-error:          #EF4444;
+  --hico7a3b-pro:            #F59E0B;   /* gold — PRO badges + upgrade CTAs        */
+  --hico7a3b-pro-dark:       #D97706;
+  --hico7a3b-on-pro:         #FFFFFF;
+
+  /* Typography */
+  --hico7a3b-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --hico7a3b-font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  --hico7a3b-fs-caption:    12px;
+  --hico7a3b-fs-body:       14px;
+  --hico7a3b-fs-subheading: 16px;
+  --hico7a3b-fs-heading:    20px;
+  --hico7a3b-fs-title:      24px;
+  --hico7a3b-fs-hero:       44px;   /* the one big number per screen */
+  --hico7a3b-fw-body:       400;
+  --hico7a3b-fw-medium:     500;
+  --hico7a3b-fw-heading:    600;
+  --hico7a3b-lh:            1.5;
+
+  /* Radii — slightly rounder than 8/6/4 reads friendlier/premium */
+  --hico7a3b-radius-card:   12px;
+  --hico7a3b-radius-btn:    8px;
+  --hico7a3b-radius-input:  8px;
+  --hico7a3b-radius-pill:   9999px;
+
+  /* Shadows — soft, low, single-direction (premium ≠ hard drop shadow) */
+  --hico7a3b-shadow-sm: 0 1px 2px rgba(16,24,40,0.05);
+  --hico7a3b-shadow: 0 1px 3px rgba(16,24,40,0.06), 0 6px 16px -6px rgba(16,24,40,0.10);
+  --hico7a3b-shadow-lg: 0 24px 48px -12px rgba(16,24,40,0.28);
+
+  /* Motion */
+  --hico7a3b-transition: 150ms ease-in-out;
+
+  /* Layout */
+  --hico7a3b-popup-w:      360px;
+  --hico7a3b-popup-w-wide: 400px;
+  --hico7a3b-popup-maxh:   560px;
+  --hico7a3b-space-1: 4px;  --hico7a3b-space-2: 8px;  --hico7a3b-space-3: 12px;
+  --hico7a3b-space-4: 16px; --hico7a3b-space-5: 20px; --hico7a3b-space-6: 24px;
+  --hico7a3b-space-7: 32px; --hico7a3b-space-8: 40px;
+}
+
+/* ---- Dark mode ------------------------------------------------------------ */
+/* Follows the system preference by default; a manual [data-theme] on <html>
+ * (set from General → Theme) always wins in both directions. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --hico7a3b-primary-50:     #241f45;
+    --hico7a3b-bg:             #0F0F1A;
+    --hico7a3b-surface:        #1A1A2E;
+    --hico7a3b-surface-2:      #232338;
+    --hico7a3b-text:           #F5F5FA;
+    --hico7a3b-text-secondary: #A1A1AA;
+    --hico7a3b-border:         #2E2E45;
+    --hico7a3b-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+    --hico7a3b-shadow-lg: 0 20px 40px -8px rgba(0,0,0,0.6), 0 8px 16px -8px rgba(0,0,0,0.4);
+  }
+}
+:root[data-theme='dark'] {
+  --hico7a3b-primary-50:     #241f45;
+  --hico7a3b-bg:             #0F0F1A;
+  --hico7a3b-surface:        #1A1A2E;
+  --hico7a3b-surface-2:      #232338;
+  --hico7a3b-text:           #F5F5FA;
+  --hico7a3b-text-secondary: #A1A1AA;
+  --hico7a3b-border:         #2E2E45;
+  --hico7a3b-shadow: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -1px rgba(0,0,0,0.3);
+  --hico7a3b-shadow-lg: 0 20px 40px -8px rgba(0,0,0,0.6), 0 8px 16px -8px rgba(0,0,0,0.4);
+}
+
+/* ---- Base ----------------------------------------------------------------- */
+.hico7a3b-root,
+body.zovo {
+  margin: 0;
+  font-family: var(--hico7a3b-font);
+  font-size: var(--hico7a3b-fs-body);
+  line-height: var(--hico7a3b-lh);
+  color: var(--hico7a3b-text);
+  background: var(--hico7a3b-bg);
+  -webkit-font-smoothing: antialiased;
+}
+.hico7a3b-root *, .hico7a3b-root *::before, .hico7a3b-root *::after { box-sizing: border-box; }
+
+/* Popup sizing helper */
+.hico7a3b-popup {
+  width: var(--hico7a3b-popup-w);
+  max-height: var(--hico7a3b-popup-maxh);
+  overflow-y: auto;
+}
+.hico7a3b-popup--wide { width: var(--hico7a3b-popup-w-wide); }
+
+/* ---- Header --------------------------------------------------------------- */
+.hico7a3b-header {
+  display: flex;
+  align-items: center;
+  gap: var(--hico7a3b-space-3);
+  padding: var(--hico7a3b-space-4) var(--hico7a3b-space-5);
+  border-bottom: 1px solid var(--hico7a3b-border);
+}
+.hico7a3b-header__icon { width: 28px; height: 28px; border-radius: var(--hico7a3b-radius-input); }
+.hico7a3b-header__title {
+  flex: 1; min-width: 0;
+  font-size: var(--hico7a3b-fs-subheading);
+  font-weight: var(--hico7a3b-fw-heading);
+  letter-spacing: -0.01em;
+}
+
+/* ---- Card ----------------------------------------------------------------- */
+.hico7a3b-card {
+  background: var(--hico7a3b-bg);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-card);
+  padding: var(--hico7a3b-space-5);
+  box-shadow: var(--hico7a3b-shadow);
+}
+.hico7a3b-card--flush { box-shadow: none; background: var(--hico7a3b-surface); }
+
+/* ---- Buttons -------------------------------------------------------------- */
+.hico7a3b-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--hico7a3b-space-2);
+  min-height: 40px;                /* comfortable premium tap target */
+  padding: 10px 18px;
+  font-family: inherit;
+  font-size: var(--hico7a3b-fs-body);
+  font-weight: var(--hico7a3b-fw-medium);
+  line-height: 1;
+  border: 1px solid transparent;
+  border-radius: var(--hico7a3b-radius-btn);
+  cursor: pointer;
+  transition: background var(--hico7a3b-transition), border-color var(--hico7a3b-transition),
+              color var(--hico7a3b-transition), transform var(--hico7a3b-transition);
+}
+.hico7a3b-btn:active { transform: translateY(1px); }
+.hico7a3b-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+}
+.hico7a3b-btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+.hico7a3b-btn--primary { background: var(--hico7a3b-primary); color: #fff; }
+.hico7a3b-btn--primary:hover:not([disabled]) { background: var(--hico7a3b-primary-dark); }
+
+.hico7a3b-btn--secondary {
+  background: var(--hico7a3b-surface);
+  color: var(--hico7a3b-text);
+  border-color: var(--hico7a3b-border);
+}
+.hico7a3b-btn--secondary:hover:not([disabled]) { background: var(--hico7a3b-surface-2); }
+
+.hico7a3b-btn--ghost { background: transparent; color: var(--hico7a3b-primary); }
+.hico7a3b-btn--ghost:hover:not([disabled]) { background: var(--hico7a3b-primary-50); }
+
+/* Gold upgrade CTA — the only button that uses the PRO color. */
+.hico7a3b-btn--pro {
+  background: var(--hico7a3b-pro);
+  color: var(--hico7a3b-on-pro);
+  font-weight: var(--hico7a3b-fw-heading);
+}
+.hico7a3b-btn--pro:hover:not([disabled]) { background: var(--hico7a3b-pro-dark); }
+
+.hico7a3b-btn--block { width: 100%; }
+
+/* ---- Inputs --------------------------------------------------------------- */
+.hico7a3b-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-family: inherit;
+  font-size: var(--hico7a3b-fs-body);
+  color: var(--hico7a3b-text);
+  background: var(--hico7a3b-surface);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-input);
+  transition: border-color var(--hico7a3b-transition), box-shadow var(--hico7a3b-transition);
+}
+.hico7a3b-input:focus-visible {
+  outline: none;
+  border-color: var(--hico7a3b-primary);
+  box-shadow: 0 0 0 3px var(--hico7a3b-primary-50);
+}
+.hico7a3b-label {
+  display: block;
+  font-size: var(--hico7a3b-fs-caption);
+  font-weight: var(--hico7a3b-fw-medium);
+  color: var(--hico7a3b-text-secondary);
+  margin-bottom: var(--hico7a3b-space-1);
+}
+
+/* ---- PRO badge ------------------------------------------------------------ */
+.hico7a3b-pro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hico7a3b-pro);
+  background: transparent;
+  border: 1px solid var(--hico7a3b-pro);
+  border-radius: var(--hico7a3b-radius-pill);
+  line-height: 1.4;
+}
+.hico7a3b-pro-badge--solid { color: var(--hico7a3b-on-pro); background: var(--hico7a3b-pro); border-color: var(--hico7a3b-pro); }
+.hico7a3b-pro-badge__lock { width: 10px; height: 10px; }
+
+/* ---- Footer --------------------------------------------------------------- */
+.hico7a3b-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--hico7a3b-space-3) var(--hico7a3b-space-5);
+  font-size: var(--hico7a3b-fs-caption);
+  color: var(--hico7a3b-text-secondary);
+  border-top: 1px solid var(--hico7a3b-border);
+}
+.hico7a3b-footer a { color: var(--hico7a3b-primary); text-decoration: none; }
+.hico7a3b-footer a:hover { text-decoration: underline; }
+
+/* ---- Utility -------------------------------------------------------------- */
+.hico7a3b-muted { color: var(--hico7a3b-text-secondary); }
+.hico7a3b-mono  { font-family: var(--hico7a3b-font-mono); }
+.hico7a3b-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* ===========================================================================
+ * PREMIUM COMPONENTS (v3) — the patterns that make a screen read premium.
+ * See DESIGN-SYSTEM.md for when/why to use each.
+ * ========================================================================= */
+
+/* Popup shell: sits on the neutral surface, comfortable padding, grid rhythm */
+.hico7a3b-popup { background: var(--hico7a3b-surface); }
+.hico7a3b-stack { display: flex; flex-direction: column; gap: var(--hico7a3b-space-4);
+  padding: var(--hico7a3b-space-5); }
+
+/* Section label — 11px uppercase tracked muted (AdBlock "NUMBER OF ITEMS…") */
+.hico7a3b-eyebrow {
+  margin: 0 0 var(--hico7a3b-space-2);
+  font-size: 11px; font-weight: var(--hico7a3b-fw-heading);
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--hico7a3b-text-secondary);
+}
+
+/* ---- Hero stat — the ONE thing the eye lands on first --------------------- */
+.hico7a3b-hero { text-align: center; padding: var(--hico7a3b-space-7) var(--hico7a3b-space-5); }
+.hico7a3b-hero__num {
+  font-size: var(--hico7a3b-fs-hero); font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.05; color: var(--hico7a3b-primary);
+}
+.hico7a3b-hero__num--pro { color: var(--hico7a3b-pro); }
+.hico7a3b-hero__label {
+  margin-top: var(--hico7a3b-space-2);
+  font-size: 11px; font-weight: var(--hico7a3b-fw-heading);
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--hico7a3b-text-secondary);
+}
+.hico7a3b-hero__sub { margin-top: var(--hico7a3b-space-3); color: var(--hico7a3b-text); }
+/* gradient progress — thin, calm */
+.hico7a3b-progress { height: 6px; border-radius: 999px; background: var(--hico7a3b-surface-2); overflow: hidden; }
+.hico7a3b-progress__fill { height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, var(--hico7a3b-primary), var(--hico7a3b-accent)); }
+
+/* Inline stat row — "4 suspended · 45 total · 6 windows" */
+.hico7a3b-stats { display: flex; justify-content: center; gap: var(--hico7a3b-space-4);
+  font-size: var(--hico7a3b-fs-caption); color: var(--hico7a3b-text-secondary); }
+.hico7a3b-stats b { color: var(--hico7a3b-text); font-weight: var(--hico7a3b-fw-heading); }
+
+/* ---- Badges --------------------------------------------------------------- */
+.hico7a3b-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 8px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.4;
+  border-radius: var(--hico7a3b-radius-pill);
+}
+.hico7a3b-badge--pro  { color: var(--hico7a3b-on-pro); background: var(--hico7a3b-pro); }
+.hico7a3b-badge--free { color: var(--hico7a3b-text-secondary); background: var(--hico7a3b-surface-2); }
+.hico7a3b-badge--new  { color: #fff; background: #3B82F6; }
+
+/* ---- Loss-framing alert — the cost of NOT upgrading (use once, honestly) --- */
+.hico7a3b-alert {
+  display: flex; align-items: center; gap: var(--hico7a3b-space-2);
+  padding: 10px 12px; border-radius: var(--hico7a3b-radius-btn);
+  font-size: var(--hico7a3b-fs-body);
+}
+.hico7a3b-alert--warn {
+  color: var(--hico7a3b-error);
+  background: color-mix(in srgb, var(--hico7a3b-error) 8%, var(--hico7a3b-bg));
+  border: 1px solid color-mix(in srgb, var(--hico7a3b-error) 22%, transparent);
+}
+
+/* ---- Empty state — delight, never a blank box ----------------------------- */
+.hico7a3b-empty { text-align: center; padding: var(--hico7a3b-space-7) var(--hico7a3b-space-5); }
+.hico7a3b-empty__art { width: 96px; height: 96px; margin: 0 auto var(--hico7a3b-space-4); opacity: 0.9; }
+.hico7a3b-empty__title { font-size: var(--hico7a3b-fs-heading); font-weight: 700; letter-spacing: -0.01em; }
+.hico7a3b-empty__text { margin-top: var(--hico7a3b-space-2); color: var(--hico7a3b-text-secondary); }
+
+/* ---- Tip carousel — dismissible in-context hint --------------------------- */
+.hico7a3b-tip {
+  position: relative; border-radius: var(--hico7a3b-radius-card);
+  border: 1px solid var(--hico7a3b-border); background: var(--hico7a3b-bg);
+  border-left: 3px solid var(--hico7a3b-primary);
+  padding: var(--hico7a3b-space-4) var(--hico7a3b-space-5);
+}
+.hico7a3b-tip__foot { display: flex; justify-content: space-between; align-items: center;
+  margin-top: var(--hico7a3b-space-3); font-size: var(--hico7a3b-fs-caption); color: var(--hico7a3b-text-secondary); }
+.hico7a3b-tip__next { color: var(--hico7a3b-primary); font-weight: var(--hico7a3b-fw-medium); cursor: pointer; }
+
+/* ---- List row ------------------------------------------------------------- */
+.hico7a3b-row {
+  display: flex; align-items: center; gap: var(--hico7a3b-space-3);
+  min-height: 44px; padding: var(--hico7a3b-space-2) var(--hico7a3b-space-3);
+  border-radius: var(--hico7a3b-radius-btn); cursor: pointer;
+  transition: background var(--hico7a3b-transition);
+}
+.hico7a3b-row:hover { background: var(--hico7a3b-primary-50); }
+.hico7a3b-row__label { flex: 1; min-width: 0; }
+.hico7a3b-row__meta { color: var(--hico7a3b-text-secondary); font-family: var(--hico7a3b-font-mono);
+  font-size: var(--hico7a3b-fs-caption); }
+
+/* ---- Segmented control — Tab / Screen / Webcam --------------------------- */
+.hico7a3b-seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: var(--hico7a3b-space-2); }
+.hico7a3b-seg__item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: var(--hico7a3b-space-3); border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-card); background: var(--hico7a3b-bg);
+  cursor: pointer; transition: border-color var(--hico7a3b-transition), background var(--hico7a3b-transition);
+}
+.hico7a3b-seg__item:hover { border-color: var(--hico7a3b-primary-light); }
+.hico7a3b-seg__item[aria-selected='true'] { border-color: var(--hico7a3b-primary); background: var(--hico7a3b-primary-50); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hico7a3b-root *, .hico7a3b-root *::before, .hico7a3b-root *::after {
+    transition: none !important; animation: none !important;
+  }
+}

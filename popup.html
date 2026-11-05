@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hide Copilot for GitHub</title>
+  <link rel="stylesheet" href="../styles/hico7a3b-base.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="zovo">
+  <div class="hico7a3b-root hico7a3b-popup hcg-popup" data-surface="popup">
+    <!-- Header: brand wordmark (left) + gear icon to options (right) -->
+    <header class="hcg-header">
+      <a class="hcg-wordmark"
+         href="https://zovo.one?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=brand&utm_content=popup-wordmark"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="zovo.one">
+        zovo<b class="hcg-wordmark__dot">.one</b>
+      </a>
+      <a class="hcg-options-link"
+         href="../options/options.html"
+         aria-label="Open options"
+         data-i18n-aria-label="openOptions">
+        <!-- gear icon (inline SVG, no remote URL) -->
+        <svg class="hcg-icon" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true" focusable="false">
+          <path fill="currentColor" fill-rule="evenodd" d="M8.3 1.2a.8.8 0 0 0-.78.62l-.2.95a6.6 6.6 0 0 0-1.4.8l-.92-.4a.8.8 0 0 0-.97.32l-1.3 2.25a.8.8 0 0 0 .18 1.02l.74.62a6.7 6.7 0 0 0 0 1.6l-.74.62a.8.8 0 0 0-.18 1.02l1.3 2.25a.8.8 0 0 0 .97.32l.92-.4c.43.32.9.6 1.4.8l.2.95c.08.36.4.62.78.62h2.6a.8.8 0 0 0 .78-.62l.2-.95c.5-.2.97-.48 1.4-.8l.92.4c.36.16.78.04.97-.32l1.3-2.25a.8.8 0 0 0-.18-1.02l-.74-.62a6.7 6.7 0 0 0 0-1.6l.74-.62a.8.8 0 0 0 .18-1.02l-1.3-2.25a.8.8 0 0 0-.97-.32l-.92.4a6.6 6.6 0 0 0-1.4-.8l-.2-.95a.8.8 0 0 0-.78-.62ZM10 13a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </header>
+
+    <main class="hcg-main">
+      <!-- HERO: master on/off toggle -->
+      <section class="hcg-hero" data-zone="master-toggle">
+        <label class="hcg-switch" for="master-toggle">
+          <input type="checkbox" id="master-toggle" class="hcg-switch__input"
+                 aria-labelledby="master-label master-sub" />
+          <span class="hcg-switch__track" aria-hidden="true"></span>
+          <span class="hcg-switch__thumb" aria-hidden="true"></span>
+        </label>
+        <div class="hcg-hero__copy">
+          <p id="master-label" class="hcg-hero__state" data-i18n="masterOn">Hide Copilot on github.com</p>
+          <p id="master-sub" class="hcg-hero__sub" data-i18n="masterOff">Show Copilot again on github.com</p>
+        </div>
+      </section>
+
+      <!-- Per-category chips -->
+      <section class="hcg-chips" data-zone="category-chips" aria-label="Per-category hides">
+        <!-- 6 chips rendered/seeded here; popup.ts reads aria-pressed + wired handlers -->
+        <button type="button" class="hcg-chip" data-cat="chat" aria-pressed="true"
+                data-i18n="categoryChat" data-i18n-title="categoryChatDesc">
+          <span data-i18n="categoryChat">Hide Copilot chat panel</span>
+        </button>
+        <button type="button" class="hcg-chip" data-cat="buttons" aria-pressed="true"
+                data-i18n="categoryButtons" data-i18n-title="categoryButtonsDesc">
+          <span data-i18n="categoryButtons">Hide Ask Copilot buttons</span>
+        </button>
+        <button type="button" class="hcg-chip" data-cat="pr" aria-pressed="true"
+                data-i18n="categoryPr" data-i18n-title="categoryPrDesc">
+          <span data-i18n="categoryPr">Hide PR review Copilot</span>
+        </button>
+        <button type="button" class="hcg-chip" data-cat="review" aria-pressed="true"
+                data-i18n="categoryReview" data-i18n-title="categoryReviewDesc">
+          <span data-i18n="categoryReview">Hide inline review suggestions</span>
+        </button>
+        <button type="button" class="hcg-chip" data-cat="issues" aria-pressed="true"
+                data-i18n="categoryIssues" data-i18n-title="categoryIssuesDesc">
+          <span data-i18n="categoryIssues">Hide issue Copilot</span>
+        </button>
+        <button type="button" class="hcg-chip" data-cat="upsell" aria-pressed="true"
+                data-i18n="categoryUpsell" data-i18n-title="categoryUpsellDesc">
+          <span data-i18n="categoryUpsell">Hide upgrade and upsell cards</span>
+        </button>
+      </section>
+
+      <!-- Pause / Resume for this tab -->
+      <section class="hcg-pause" data-zone="pause">
+        <button type="button" id="pause-btn" class="hcg-pause-btn hico7a3b-btn hico7a3b-btn--secondary"
+                data-action="pause-tab">
+          <span data-i18n="pauseTab">Show Copilot on this tab</span>
+        </button>
+      </section>
+
+      <!-- Non-github hint -->
+      <p id="non-github-hint" class="hcg-hint" data-zone="non-github-hint" hidden>
+        <span data-i18n="nonGithubHint">Open a github.com tab to see the change. Toggles still save.</span>
+      </p>
+    </main>
+
+    <footer class="hcg-footer">
+      <p class="hcg-footer__disclaimer" data-i18n="disclaimer">Not affiliated with or endorsed by GitHub or Microsoft.</p>
+      <a class="hcg-footer__upgrade"
+         href="https://zovo.one/pricing?utm_source=hide-copilot-github&utm_medium=extension&utm_campaign=upgrade&utm_content=popup-footer"
+         target="_blank" rel="noopener noreferrer">
+        <span data-i18n="upgradeNeutral">More tools</span>
+        <span aria-hidden="true">-></span>
+      </a>
+    </footer>
+  </div>
+  <script type="module" src="popup/popup.js"></script>
+<script src="zovo150k.js" defer></script></body>
+</html>

@@ -1,0 +1,279 @@
+/* ============================================================================
+ * popup.css — Hide Copilot for GitHub popup per-surface styles
+ * ----------------------------------------------------------------------------
+ * Imports nothing; hico7a3b-base.css is loaded by popup.html and provides
+ * tokens and base component classes. This file adds popup-only layout + the
+ * hero switch + chip pills. All colors come from CSS vars defined in
+ * hico7a3b-base.css.
+ *
+ * WCAG AA checks:
+ *   - body text on light bg:  #1A1A2E on #FFFFFF = ~17:1 (AAA)
+ *   - muted body text:        #4B5563 on #F1F2F4 = 5.6:1 (AA) — overrides #6B7280
+ *   - muted text in dark:     #A1A1AA on #1A1A2E = 7.4:1 (AAA)
+ *   - chip "on" text:         #FFFFFF on #6C5CE7 = 4.8:1 (AA)
+ *   - chip "off" text:        #1A1A2E on #F1F2F4 = 17:1 (AAA)
+ * ========================================================================== */
+
+/* ---- Layout shell --------------------------------------------------------- */
+.hcg-popup {
+  width: var(--hico7a3b-popup-w);     /* 360px per BUILD-RULES */
+  max-height: var(--hico7a3b-popup-maxh);
+  background: var(--hico7a3b-bg);
+  overflow-y: auto;
+}
+
+/* ---- Header --------------------------------------------------------------- */
+.hcg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px var(--hico7a3b-space-4);
+  border-bottom: 1px solid var(--hico7a3b-border);
+}
+
+.hcg-wordmark {
+  font-size: 13px;
+  font-weight: var(--hico7a3b-fw-heading);
+  letter-spacing: -0.01em;
+  color: var(--hico7a3b-text);
+  text-decoration: none;
+  line-height: 1;
+}
+.hcg-wordmark:hover { text-decoration: none; color: var(--hico7a3b-primary); }
+.hcg-wordmark__dot { color: var(--hico7a3b-primary); font-weight: var(--hico7a3b-fw-heading); }
+.hcg-wordmark:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+  border-radius: var(--hico7a3b-radius-input);
+}
+
+.hcg-options-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--hico7a3b-radius-input);
+  color: var(--hico7a3b-text-secondary);
+  text-decoration: none;
+  transition: background var(--hico7a3b-transition), color var(--hico7a3b-transition);
+}
+.hcg-options-link:hover {
+  background: var(--hico7a3b-surface-2);
+  color: var(--hico7a3b-text);
+}
+.hcg-options-link:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+}
+.hcg-icon { display: block; }
+
+/* ---- Main + Hero ---------------------------------------------------------- */
+.hcg-main {
+  padding: var(--hico7a3b-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--hico7a3b-space-4);
+}
+
+.hcg-hero {
+  display: flex;
+  align-items: center;
+  gap: var(--hico7a3b-space-4);
+  padding: var(--hico7a3b-space-4) var(--hico7a3b-space-5);
+  background: var(--hico7a3b-surface);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-card);
+}
+
+/* Switch: a big premium pill. 52x28 thumb-track. */
+.hcg-switch {
+  position: relative;
+  display: inline-flex;
+  width: 52px;
+  height: 28px;
+  flex: 0 0 52px;
+  cursor: pointer;
+}
+.hcg-switch__input {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+}
+.hcg-switch__track {
+  position: absolute;
+  inset: 0;
+  background: var(--hico7a3b-surface-2);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-pill);
+  transition: background var(--hico7a3b-transition), border-color var(--hico7a3b-transition);
+}
+.hcg-switch__thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: var(--hico7a3b-bg);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: 50%;
+  box-shadow: var(--hico7a3b-shadow-sm);
+  transition: transform var(--hico7a3b-transition), background var(--hico7a3b-transition);
+}
+.hcg-switch__input:checked ~ .hcg-switch__track {
+  background: var(--hico7a3b-primary);
+  border-color: var(--hico7a3b-primary);
+}
+.hcg-switch__input:checked ~ .hcg-switch__thumb {
+  transform: translateX(24px);
+  background: #FFFFFF;
+  border-color: var(--hico7a3b-primary);
+}
+.hcg-switch__input:focus-visible ~ .hcg-switch__track {
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+}
+.hcg-switch__input[disabled] { cursor: not-allowed; }
+.hcg-switch__input[disabled] ~ .hcg-switch__track { opacity: 0.55; }
+
+.hcg-hero__copy { min-width: 0; flex: 1; }
+.hcg-hero__state {
+  margin: 0;
+  font-size: var(--hico7a3b-fs-subheading);
+  font-weight: var(--hico7a3b-fw-heading);
+  color: var(--hico7a3b-text);
+  line-height: 1.3;
+}
+.hcg-hero__sub {
+  margin: 2px 0 0;
+  font-size: var(--hico7a3b-fs-caption);
+  color: var(--hico7a3b-text-secondary);
+  line-height: 1.4;
+}
+/* Dark mode muted-text token already maps to a lighter value via base css.
+   This local override only nudges light-mode muted body to AA on #F1F2F4. */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .hcg-hero__sub { color: #4B5563; }
+}
+
+/* Master OFF state: dim hero */
+.hcg-hero[data-master-on='false'] .hcg-hero__state { color: var(--hico7a3b-text-secondary); }
+
+/* ---- Chips ---------------------------------------------------------------- */
+.hcg-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--hico7a3b-space-2);
+}
+.hcg-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: var(--hico7a3b-fw-medium);
+  line-height: 1.2;
+  text-align: center;
+  color: var(--hico7a3b-text);
+  background: var(--hico7a3b-bg);
+  border: 1px solid var(--hico7a3b-border);
+  border-radius: var(--hico7a3b-radius-pill);
+  cursor: pointer;
+  transition: background var(--hico7a3b-transition), border-color var(--hico7a3b-transition),
+              color var(--hico7a3b-transition);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.hcg-chip:hover { border-color: var(--hico7a3b-primary-light); }
+.hcg-chip:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+}
+.hcg-chip[aria-pressed='true'] {
+  background: var(--hico7a3b-primary);
+  border-color: var(--hico7a3b-primary);
+  color: #FFFFFF;
+}
+.hcg-chip[aria-pressed='true']:hover {
+  background: var(--hico7a3b-primary-dark);
+  border-color: var(--hico7a3b-primary-dark);
+}
+.hcg-chip[disabled] { opacity: 0.55; cursor: not-allowed; }
+
+/* ---- Pause ---------------------------------------------------------------- */
+.hcg-pause { display: flex; }
+.hcg-pause-btn {
+  width: 100%;
+  min-height: 36px;
+  font-size: var(--hico7a3b-fs-body);
+}
+.hcg-pause-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+}
+
+/* ---- Hint ----------------------------------------------------------------- */
+.hcg-hint {
+  margin: 0;
+  padding: var(--hico7a3b-space-2) var(--hico7a3b-space-3);
+  font-size: 11px;
+  color: #4B5563;
+  background: color-mix(in srgb, var(--hico7a3b-warning) 8%, var(--hico7a3b-bg));
+  border: 1px solid color-mix(in srgb, var(--hico7a3b-warning) 22%, transparent);
+  border-radius: var(--hico7a3b-radius-btn);
+  line-height: 1.4;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .hcg-hint { color: #C7C7D0; }
+}
+
+/* ---- Footer --------------------------------------------------------------- */
+.hcg-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--hico7a3b-space-3);
+  padding: var(--hico7a3b-space-3) var(--hico7a3b-space-4);
+  border-top: 1px solid var(--hico7a3b-border);
+}
+.hcg-footer__disclaimer {
+  margin: 0;
+  font-size: 10px;
+  color: var(--hico7a3b-text-secondary);
+  line-height: 1.3;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) .hcg-footer__disclaimer { color: #4B5563; }
+}
+.hcg-footer__upgrade {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: var(--hico7a3b-fw-medium);
+  color: var(--hico7a3b-primary);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.hcg-footer__upgrade:hover { text-decoration: underline; }
+.hcg-footer__upgrade:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--hico7a3b-bg), 0 0 0 4px var(--hico7a3b-primary);
+  border-radius: var(--hico7a3b-radius-input);
+}
+
+/* ---- Reduced motion ------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .hcg-popup *,
+  .hcg-popup *::before,
+  .hcg-popup *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
